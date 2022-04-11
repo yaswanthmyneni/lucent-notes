@@ -1,7 +1,13 @@
+import { Navigation, Routing } from "components";
 import "./common-styles.css";
 
 function App() {
-  return <h1>Hello Notes</h1>;
+  return (
+    <>
+      <Navigation />
+      <Routing />
+    </>
+  );
 }
 
 export default App;
