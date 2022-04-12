@@ -1,0 +1,46 @@
+/* Sign-Up Section */
+.sign-up-main {
+  display: flex;
+  padding-top: 2rem;
+}
+
+.sign-up-container {
+  margin: auto;
+}
+
+.sign-up > .input-container {
+  width: 25rem;
+}
+
+.sign-up label {
+  margin: 8px 0 4px 0;
+}
+
+.gap-0 {
+  gap: 0;
+}
+
+.input-container {
+  padding: 10px 3rem;
+}
+
+.signup-margin-top {
+  margin-top: 8px;
+}
+
+.signup-margin-tb-4px {
+  margin: 4px 0;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+  .input-container {
+    padding: 10px 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sign-up > .input-container {
+    width: 20rem;
+  }
+}

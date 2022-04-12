@@ -1,0 +1,29 @@
+.logout-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout-margin-top {
+  margin-top: 13rem;
+}
+
+.logout-flex-direction {
+  flex-direction: row;
+}
+
+.logout-flex .btn {
+  padding: 0.8em 1.5em;
+  margin: 1rem 8px;
+  text-decoration: none;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 480px) {
+  .logout-flex h2 {
+    font-size: 1.5rem;
+  }
+  .logout-flex .btn {
+    padding: 0.4em 1em;
+  }
+}

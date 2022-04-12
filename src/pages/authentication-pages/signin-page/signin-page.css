@@ -1,0 +1,30 @@
+/* Sign-In Section */
+.sign-in {
+  display: flex;
+  padding-top: 4rem;
+}
+
+.sign-in-container {
+  margin: auto;
+}
+
+.sign-in-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.input-container button {
+  margin: 1rem 0;
+}
+
+.m-top-8px {
+  margin-top: 8px;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 480px) {
+  .sign-in > .input-container {
+    width: 20rem;
+  }
+}
