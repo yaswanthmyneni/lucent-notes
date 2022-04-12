@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+.width-fc {
+  width: fit-content;
+}
+
+.color-success {
+  color: var(--color-green-600);
+}
