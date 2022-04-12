@@ -8,10 +8,24 @@ body {
   position: relative;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
 .width-fc {
   width: fit-content;
 }
 
-.color-success {
+.color-green {
   color: var(--color-green-600);
+}
+
+.color-red {
+  color: var(--color-red);
 }

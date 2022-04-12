@@ -10,10 +10,10 @@ const LandingPage = () => {
         <div className="grid grid-50-50">
           <div className="hero">
             <h1 className="hero-title">
-              <strong class="color-success">Lucent</strong> Notes
+              <strong className="color-green">Lucent</strong> Notes
             </h1>
             <h4>Meet your modern</h4>
-            <h4 className="color-success">Note Taking App</h4>
+            <h4 className="color-green">Note Taking App</h4>
             <p>
               Manage your daily tasks and workflow in a modern way and boost
               your efficiency without any efforts.
