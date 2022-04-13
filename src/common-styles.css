@@ -1,3 +1,7 @@
+:root {
+  --z-index-toast-27: 27;
+}
+
 body {
   margin: 0;
   box-sizing: border-box;
