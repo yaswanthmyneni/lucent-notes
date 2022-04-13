@@ -1,9 +1,25 @@
 import { Link } from "react-router-dom";
 import heroImage from "assets/images/hero.svg";
 import { Footer } from "components";
+import { v4 as uuid } from "uuid";
+import { useToastContext } from "context";
 import "./LandingPage.css";
 
 const LandingPage = () => {
+  const { toastDispatch } = useToastContext();
+  const encodedToken = localStorage.getItem("token");
+
+  const alreadySignedIn = () => {
+    toastDispatch({
+      type: "ADD_TOAST",
+      payload: {
+        id: uuid(),
+        className: "toast-warning",
+        message: "Already Signed In",
+      },
+    });
+  };
+
   return (
     <>
       <main className="landing-page-main">
@@ -19,10 +35,20 @@ const LandingPage = () => {
               your efficiency without any efforts.
             </p>
             <div className="m-t-10rem">
-              <Link to="/signup" className="btn btn-primary width-fc hero-link">
+              <Link
+                onClick={encodedToken && alreadySignedIn}
+                to={!encodedToken && "/signup"}
+                className="btn btn-primary width-fc hero-link"
+                state={{ from: { pathname: "/" } }}
+              >
                 Join now
               </Link>
-              <Link to="/signin" className="hero-link">
+              <Link
+                onClick={encodedToken && alreadySignedIn}
+                to={!encodedToken && "/signin"}
+                className="hero-link"
+                state={{ from: { pathname: "/" } }}
+              >
                 Already have an account?
               </Link>
             </div>
