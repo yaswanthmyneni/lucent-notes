@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { FaGithub, FaLinkedin, FaTwitter } from "assets/icons/icons";
 import "./footer.css";
 
 const Footer = () => {
@@ -11,21 +11,21 @@ const Footer = () => {
           href="https://github.com/yaswanthmyneni/"
           rel="noreferrer"
         >
-          <i className="fa-brands fa-github social-links"></i>
+          <FaGithub className="social-links" />
         </a>
         <a
           target="_blank"
           href="https://linkedin.com/in/yaswanth-myneni-a0a7261b1"
           rel="noreferrer"
         >
-          <i className="fa-brands fa-linkedin social-links"></i>
+          <FaLinkedin className="social-links" />
         </a>
         <a
           target="_blank"
           href="https://twitter.com/yaswanthtweets"
           rel="noreferrer"
         >
-          <i className="fa-brands fa-twitter social-links"></i>
+          <FaTwitter className="social-links" />
         </a>
       </div>
     </footer>

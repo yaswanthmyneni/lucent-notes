@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { makeServer } from "./server";
+import { AuthenticationProvider, ToastProvider } from "context";
 
 // Call make Server
 makeServer();
@@ -10,7 +11,11 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthenticationProvider>
+        <ToastProvider>
+          <App />
+        </ToastProvider>
+      </AuthenticationProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
