@@ -1,7 +1,7 @@
 const { Navigate, useLocation } = require("react-router-dom");
 
 const RequireAuth = ({ children }) => {
-  let location = useLocation();
+  const location = useLocation();
   const encodedToken = localStorage.getItem("token");
 
   return encodedToken ? (
