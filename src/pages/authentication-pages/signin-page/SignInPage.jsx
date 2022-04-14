@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuthenticationContext, useToastContext } from "context";
+import { useAuthenticationContext, useNotesContext, useToastContext } from "context";
 import { submitSignInDetails } from "utility";
 import { FaAngleRight } from "assets/icons/icons";
 import "./signin-page.css";
@@ -13,6 +13,9 @@ const SignInPage = () => {
     authState: { email, password },
     authDispatch,
   } = useAuthenticationContext();
+
+  // from notes context
+  const {notesDispatch} = useNotesContext();
 
   // from toast context
   const { toastDispatch } = useToastContext();
@@ -71,7 +74,8 @@ const SignInPage = () => {
                   location,
                   encodedToken,
                   toastDispatch,
-                  authDispatch
+                  authDispatch,
+                  notesDispatch
                 )
               }
             >
@@ -88,7 +92,8 @@ const SignInPage = () => {
                   location,
                   encodedToken,
                   toastDispatch,
-                  authDispatch
+                  authDispatch,
+                  notesDispatch
                 )
               }
             >

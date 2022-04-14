@@ -19,18 +19,20 @@ const Navigation = () => {
         <NavLink className="navbar" to="/">
           <h1 className="navbar-m-lr-1">LUCENT NOTES</h1>
         </NavLink>
-        {!encodedToken && (
+        {location.pathname === "/" && (
           <NavLink
             className="navbar navbar-m-left-auto"
-            to="/signin"
+            to="/notes"
             state={{ from: location }}
           >
-            <h5 className="navbar-m-lr-1">LOGIN</h5>
+            <h5 className="navbar-m-lr-1">NOTES</h5>
           </NavLink>
         )}
         {encodedToken && (
           <NavLink
-            className="navbar navbar-m-left-auto"
+            className={`navbar ${
+              location.pathname === "/" ? "" : "navbar-m-left-auto"
+            }`}
             to="/logout"
             onClick={() => {
               setLogout(true);

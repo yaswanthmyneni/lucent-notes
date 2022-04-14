@@ -1,0 +1,38 @@
+.note-card {
+  width: 90%;
+  padding: 1rem;
+  border: 2px solid var(--color-gray);
+  border-radius: 5px;
+}
+
+.edit-icon {
+  font-size: 1.38rem;
+  padding-bottom: 2.5px;
+}
+
+.archive-icon {
+  font-size: 1.34rem;
+  padding-bottom: 2.5px;
+}
+
+.trash-icon {
+  font-size: 1.05rem;
+  padding-bottom: 3.3px;
+}
+
+.trash-icon:hover {
+  color: var(--color-red);
+}
+
+.archive-icon:hover {
+  color: var(--color-archive);
+}
+
+.label-icon {
+  font-size: 1.38rem;
+  padding-bottom: 2.5px;
+}
+
+.label-icon:hover {
+  color: var(--color-label);
+}

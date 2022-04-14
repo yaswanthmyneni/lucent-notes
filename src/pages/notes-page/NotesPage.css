@@ -1,0 +1,28 @@
+.notes-main {
+  grid-area: main;
+  width: 50%;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.notes-search-container {
+  width: 90%;
+  padding: 4px 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.notes-input {
+  width: 86%;
+  border: 0;
+  padding: 8px;
+  font-size: 1.2rem;
+}
+
+.filter-icon {
+  transform: rotate(-90deg);
+}

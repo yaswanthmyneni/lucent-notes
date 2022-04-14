@@ -1,5 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuthenticationContext, useToastContext } from "context";
+import {
+  useAuthenticationContext,
+  useNotesContext,
+  useToastContext,
+} from "context";
 import { submitSignUpDetails } from "utility";
 import { FaAngleRight } from "assets/icons/icons";
 import "./signup-page.css";
@@ -18,6 +22,9 @@ const SignUpPage = () => {
     authDispatch,
   } = useAuthenticationContext();
 
+  // from notes context
+  const { notesDispatch } = useNotesContext();
+
   // from toast context
   const { toastDispatch } = useToastContext();
 
@@ -25,7 +32,7 @@ const SignUpPage = () => {
     <>
       <main className="sign-up-main">
         <section className="sign-up sign-up-container">
-          <div className="input-container">
+          <div className="input-container signup-input-container">
             <h2 className="text-center">SignUp</h2>
             <form className="input-flex gap-0">
               <label htmlFor="firstname">First Name</label>
@@ -122,7 +129,8 @@ const SignUpPage = () => {
                     location,
                     encodedToken,
                     toastDispatch,
-                    authDispatch
+                    authDispatch,
+                    notesDispatch
                   )
                 }
               >

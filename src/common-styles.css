@@ -1,10 +1,13 @@
 :root {
   --z-index-toast-27: 27;
+  --color-archive: #8b008b;
+  --color-label: #6c61f6;
 }
 
 body {
   margin: 0;
   box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 #root {
@@ -14,8 +17,29 @@ body {
 
 .flex {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+.gap-1rem {
+  gap: 1rem;
+}
+
+.flex-start {
+  justify-content: flex-start;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.flex-column {
+  flex-direction: column;
 }
 
 .cursor {
@@ -32,4 +56,26 @@ body {
 
 .color-red {
   color: var(--color-red);
+}
+
+.m-r-1rem {
+  margin-right: 1rem;
+}
+
+.m-t-1rem {
+  margin-top: 1rem;
+}
+
+.page-wrapper {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  grid-template-areas: "aside main";
+}
+
+@media screen and (max-width: 486px) {
+  .page-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
 }

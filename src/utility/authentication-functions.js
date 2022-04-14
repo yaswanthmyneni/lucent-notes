@@ -9,7 +9,8 @@ const submitSignInDetails = async (
   location,
   encodedToken,
   toastDispatch,
-  authDispatch
+  authDispatch,
+  notesDispatch
 ) => {
   try {
     event.preventDefault();
@@ -29,7 +30,7 @@ const submitSignInDetails = async (
     });
     if (response.status === 200) {
       localStorage.setItem("token", response.data.encodedToken);
-      authDispatch({ type: "USER", payload: response.data.foundUser });
+      notesDispatch({ type: "USER", payload: response.data.foundUser });
       authDispatch({ type: "CLEAR_SIGN_IN" });
       navigate(location?.state?.from?.pathname, { replace: true });
       toastDispatch({
@@ -64,7 +65,8 @@ const submitSignUpDetails = async (
   location,
   encodedToken,
   toastDispatch,
-  authDispatch
+  authDispatch,
+  notesDispatch,
 ) => {
   try {
     event.preventDefault();
@@ -91,7 +93,7 @@ const submitSignUpDetails = async (
 
       if (response.status === 201) {
         localStorage.setItem("token", response.data.encodedToken);
-        authDispatch({ type: "USER", payload: response.data.createdUser });
+        notesDispatch({ type: "USER", payload: response.data.createdUser });
         authDispatch({ type: "CLEAR_SIGN_UP" });
         navigate(location?.state?.from?.pathname, { replace: true });
         toastDispatch({
