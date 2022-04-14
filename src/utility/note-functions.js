@@ -1,6 +1,16 @@
 import axios from "axios";
 import { v4 as uuid } from "uuid";
 
+const getDateAndTime = () => {
+  const today = new Date();
+  const date =
+    today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+  const time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  const dateAndTime = date + " at " + time;
+  return dateAndTime;
+};
+
 const getNotes = async (notesDispatch, toastDispatch, user) => {
   try {
     const encodedToken = localStorage.getItem("token");
@@ -25,9 +35,16 @@ const getNotes = async (notesDispatch, toastDispatch, user) => {
   }
 };
 
-const addToNotes = async (event, notesState, notesDispatch, toastDispatch) => {
+const addToNotes = async (
+  event,
+  notesState,
+  notesDispatch,
+  toastDispatch,
+  dateAndTime
+) => {
   try {
     event.preventDefault();
+    const dateAndTime = getDateAndTime();
     const { title, description, user } = notesState;
     const encodedToken = localStorage.getItem("token");
 
@@ -48,7 +65,7 @@ const addToNotes = async (event, notesState, notesDispatch, toastDispatch) => {
         url: "/api/notes",
         headers: { authorization: encodedToken },
         data: {
-          note: { title, description },
+          note: { title, description, dateAndTime },
         },
       });
 
