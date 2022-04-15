@@ -1,5 +1,5 @@
 import axios from "axios";
-import { v4 as uuid } from "uuid";
+import { getUniqueNumber } from "./common-functions";
 
 const submitSignInDetails = async (
   event,
@@ -9,7 +9,8 @@ const submitSignInDetails = async (
   location,
   encodedToken,
   toastDispatch,
-  authDispatch
+  authDispatch,
+  notesDispatch
 ) => {
   try {
     event.preventDefault();
@@ -17,7 +18,7 @@ const submitSignInDetails = async (
       return toastDispatch({
         type: "ADD_TOAST",
         payload: {
-          id: uuid(),
+          id: getUniqueNumber(),
           className: "toast-error",
           message: "already logged in",
         },
@@ -29,13 +30,13 @@ const submitSignInDetails = async (
     });
     if (response.status === 200) {
       localStorage.setItem("token", response.data.encodedToken);
-      authDispatch({ type: "USER", payload: response.data.foundUser });
+      notesDispatch({ type: "USER", payload: response.data.foundUser });
       authDispatch({ type: "CLEAR_SIGN_IN" });
       navigate(location?.state?.from?.pathname, { replace: true });
       toastDispatch({
         type: "ADD_TOAST",
         payload: {
-          id: uuid(),
+          id: getUniqueNumber(),
           className: "toast-success",
           message: "logged in successfully",
         },
@@ -46,7 +47,7 @@ const submitSignInDetails = async (
     toastDispatch({
       type: "ADD_TOAST",
       payload: {
-        id: uuid(),
+        id: getUniqueNumber(),
         className: "toast-error",
         message: "error! check console",
       },
@@ -64,7 +65,8 @@ const submitSignUpDetails = async (
   location,
   encodedToken,
   toastDispatch,
-  authDispatch
+  authDispatch,
+  notesDispatch
 ) => {
   try {
     event.preventDefault();
@@ -74,7 +76,7 @@ const submitSignUpDetails = async (
       return toastDispatch({
         type: "ADD_TOAST",
         payload: {
-          id: uuid(),
+          id: getUniqueNumber(),
           className: "toast-error",
           message: "already logged in",
         },
@@ -91,13 +93,13 @@ const submitSignUpDetails = async (
 
       if (response.status === 201) {
         localStorage.setItem("token", response.data.encodedToken);
-        authDispatch({ type: "USER", payload: response.data.createdUser });
+        notesDispatch({ type: "USER", payload: response.data.createdUser });
         authDispatch({ type: "CLEAR_SIGN_UP" });
         navigate(location?.state?.from?.pathname, { replace: true });
         toastDispatch({
           type: "ADD_TOAST",
           payload: {
-            id: uuid(),
+            id: getUniqueNumber(),
             className: "toast-success",
             message: "signed up successfully",
           },
@@ -107,7 +109,7 @@ const submitSignUpDetails = async (
       toastDispatch({
         type: "ADD_TOAST",
         payload: {
-          id: uuid(),
+          id: getUniqueNumber(),
           className: "toast-warning",
           message: "Enter proper email format!",
         },
@@ -118,7 +120,7 @@ const submitSignUpDetails = async (
     toastDispatch({
       type: "ADD_TOAST",
       payload: {
-        id: uuid(),
+        id: getUniqueNumber(),
         className: "toast-error",
         message: "error! check console",
       },
