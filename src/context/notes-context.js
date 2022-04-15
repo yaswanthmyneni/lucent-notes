@@ -38,8 +38,6 @@ const NotesProvider = ({ children }) => {
     isDisplayModal: false,
   });
 
-  console.log(notesState.user);
-
   const value = { notesState, notesDispatch };
   return (
     <NotesContext.Provider value={value}>{children}</NotesContext.Provider>
