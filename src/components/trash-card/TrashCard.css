@@ -1,0 +1,6 @@
+.trash-note-card {
+    width: 20rem;
+    padding: 1rem;
+    border: 2px solid var(--color-gray);
+    border-radius: 5px;
+}

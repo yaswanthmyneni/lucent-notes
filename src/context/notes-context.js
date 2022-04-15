@@ -13,11 +13,14 @@ const notesReducer = (state, { type, payload }) => {
       return { ...state, title: payload };
     case "DESCRIPTION":
       return { ...state, description: payload };
+    case "NOTE_ID":
+      return { ...state, noteId: payload };
     case "CLEAR_NOTES_INPUTS":
       return {
         ...state,
         title: "",
         description: "",
+        noteId: null,
       };
     case "DISPLAY_MODAL":
       return { ...state, isDisplayModal: payload };
@@ -31,8 +34,11 @@ const NotesProvider = ({ children }) => {
     user: {},
     title: "",
     description: "",
+    noteId: null,
     isDisplayModal: false,
   });
+
+  console.log(notesState.user);
 
   const value = { notesState, notesDispatch };
   return (

@@ -1,12 +1,12 @@
 import { AiFillCloseCircle } from "assets/icons/icons";
 import { useNotesContext, useToastContext } from "context";
-import { addToNotes } from "utility";
+import { addToNotes, editNote } from "utility";
 import "./NoteModal.css";
 
 const NoteModal = () => {
   // from notes context
   const { notesState, notesDispatch } = useNotesContext();
-  const { title, description } = notesState;
+  const { title, description, noteId } = notesState;
 
   // from toast context
   const { toastDispatch } = useToastContext();
@@ -43,14 +43,25 @@ const NoteModal = () => {
           }
         />
         <div className="text-center">
-          <button
-            className="btn btn-primary m-t-1rem"
-            onClick={(event) =>
-              addToNotes(event, notesState, notesDispatch, toastDispatch)
-            }
-          >
-            Add note
-          </button>
+          {!noteId ? (
+            <button
+              className="btn btn-primary m-t-1rem"
+              onClick={(event) =>
+                addToNotes(event, notesState, notesDispatch, toastDispatch)
+              }
+            >
+              Add note
+            </button>
+          ) : (
+            <button
+              className="btn btn-primary m-t-1rem"
+              onClick={(event) =>
+                editNote(event, notesState, notesDispatch, toastDispatch)
+              }
+            >
+              edit note
+            </button>
+          )}
         </div>
       </form>
     </>
