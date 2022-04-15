@@ -1,5 +1,5 @@
 import axios from "axios";
-import { v4 as uuid } from "uuid";
+import { getUniqueNumber } from "./common-functions";
 
 const getDateAndTime = () => {
   const today = new Date();
@@ -27,7 +27,7 @@ const getNotes = async (notesDispatch, toastDispatch, user) => {
     toastDispatch({
       type: "ADD_TOAST",
       payload: {
-        id: uuid(),
+        id: getUniqueNumber(),
         className: "toast-error",
         message: "check console!",
       },
@@ -52,7 +52,7 @@ const addToNotes = async (
       return toastDispatch({
         type: "ADD_TOAST",
         payload: {
-          id: uuid(),
+          id: getUniqueNumber(),
           className: "toast-warning",
           message: "enter all inputs to create note",
         },
@@ -76,7 +76,7 @@ const addToNotes = async (
         toastDispatch({
           type: "ADD_TOAST",
           payload: {
-            id: uuid(),
+            id: getUniqueNumber(),
             className: "toast-success",
             message: "note is created",
           },
@@ -86,7 +86,7 @@ const addToNotes = async (
       toastDispatch({
         type: "ADD_TOAST",
         payload: {
-          id: uuid(),
+          id: getUniqueNumber(),
           className: "toast-error",
           message: "Page is reloaded, login again",
         },
@@ -97,7 +97,7 @@ const addToNotes = async (
     toastDispatch({
       type: "ADD_TOAST",
       payload: {
-        id: uuid(),
+        id: getUniqueNumber(),
         className: "toast-error",
         message: "check console!",
       },

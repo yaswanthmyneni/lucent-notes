@@ -1,5 +1,5 @@
 import axios from "axios";
-import { v4 as uuid } from "uuid";
+import { getUniqueNumber } from "./common-functions";
 
 const submitSignInDetails = async (
   event,
@@ -18,7 +18,7 @@ const submitSignInDetails = async (
       return toastDispatch({
         type: "ADD_TOAST",
         payload: {
-          id: uuid(),
+          id: getUniqueNumber(),
           className: "toast-error",
           message: "already logged in",
         },
@@ -36,7 +36,7 @@ const submitSignInDetails = async (
       toastDispatch({
         type: "ADD_TOAST",
         payload: {
-          id: uuid(),
+          id: getUniqueNumber(),
           className: "toast-success",
           message: "logged in successfully",
         },
@@ -47,7 +47,7 @@ const submitSignInDetails = async (
     toastDispatch({
       type: "ADD_TOAST",
       payload: {
-        id: uuid(),
+        id: getUniqueNumber(),
         className: "toast-error",
         message: "error! check console",
       },
@@ -66,7 +66,7 @@ const submitSignUpDetails = async (
   encodedToken,
   toastDispatch,
   authDispatch,
-  notesDispatch,
+  notesDispatch
 ) => {
   try {
     event.preventDefault();
@@ -76,7 +76,7 @@ const submitSignUpDetails = async (
       return toastDispatch({
         type: "ADD_TOAST",
         payload: {
-          id: uuid(),
+          id: getUniqueNumber(),
           className: "toast-error",
           message: "already logged in",
         },
@@ -99,7 +99,7 @@ const submitSignUpDetails = async (
         toastDispatch({
           type: "ADD_TOAST",
           payload: {
-            id: uuid(),
+            id: getUniqueNumber(),
             className: "toast-success",
             message: "signed up successfully",
           },
@@ -109,7 +109,7 @@ const submitSignUpDetails = async (
       toastDispatch({
         type: "ADD_TOAST",
         payload: {
-          id: uuid(),
+          id: getUniqueNumber(),
           className: "toast-warning",
           message: "Enter proper email format!",
         },
@@ -120,7 +120,7 @@ const submitSignUpDetails = async (
     toastDispatch({
       type: "ADD_TOAST",
       payload: {
-        id: uuid(),
+        id: getUniqueNumber(),
         className: "toast-error",
         message: "error! check console",
       },
