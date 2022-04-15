@@ -6,6 +6,7 @@ import {
 } from "assets/icons/icons";
 import { NavLink } from "react-router-dom";
 import { useNotesContext } from "context";
+import clsx from "clsx";
 import "./AsideBar.css";
 
 const AsideBar = () => {
@@ -17,9 +18,9 @@ const AsideBar = () => {
         <NavLink
           to="/notes"
           className={({ isActive }) =>
-            isActive
-              ? "aside-link flex flex-start cursor active-link"
-              : "aside-link flex flex-start cursor"
+            clsx("aside-link flex flex-start cursor", {
+              "active-link": isActive,
+            })
           }
         >
           <AiOutlineHome className="m-r-1rem aside-icons" /> Notes
@@ -27,9 +28,9 @@ const AsideBar = () => {
         <NavLink
           to="/label"
           className={({ isActive }) =>
-            isActive
-              ? "aside-link flex flex-start cursor active-link"
-              : "aside-link flex flex-start cursor"
+            clsx("aside-link flex flex-start cursor", {
+              "active-link": isActive,
+            })
           }
         >
           <MdOutlineLabel className="m-r-1rem aside-icons" />
@@ -38,9 +39,9 @@ const AsideBar = () => {
         <NavLink
           to="/archive"
           className={({ isActive }) =>
-            isActive
-              ? "aside-link flex flex-start cursor active-link"
-              : "aside-link flex flex-start cursor"
+            clsx("aside-link flex flex-start cursor", {
+              "active-link": isActive,
+            })
           }
         >
           <BsArchive className="m-r-1rem aside-icons" />
@@ -49,9 +50,9 @@ const AsideBar = () => {
         <NavLink
           to="/trash"
           className={({ isActive }) =>
-            isActive
-              ? "aside-link flex flex-start cursor active-link"
-              : "aside-link flex flex-start cursor"
+            clsx("aside-link flex flex-start cursor", {
+              "active-link": isActive,
+            })
           }
         >
           <FiTrash className="m-r-1rem aside-icons" />
