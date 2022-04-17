@@ -12,7 +12,7 @@ const NotesPage = () => {
     notesDispatch,
   } = useNotesContext();
   const { notes } = user;
-  
+
   // from toast context
   const { toastDispatch } = useToastContext();
 
@@ -27,11 +27,20 @@ const NotesPage = () => {
         <main className="notes-main">
           <div className="input-container notes-search-container">
             <BiSearchAlt2 />
-            <input type="text" className="input notes-input" />
+            <label htmlFor="search-bar" className="notes-input-label">
+              <input
+                type="text"
+                id="search-bar"
+                className="input notes-input"
+              />
+            </label>
             <GoSettings className="filter-icon cursor" />
           </div>
-          {Object.keys(user).length > 0 &&
-            notes.map((note) => <NoteCard key={note._id} note={note} />)}
+          {notes?.length ? (
+            notes.map((note) => <NoteCard key={note._id} note={note} />)
+          ) : (
+            <h1 className="text-center">The Notes Page is empty!</h1>
+          )}
         </main>
       </div>
       {isDisplayModal && <NoteModal />}

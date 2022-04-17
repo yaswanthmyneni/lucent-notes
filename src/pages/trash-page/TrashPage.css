@@ -1,0 +1,10 @@
+.trash-page-main {
+    margin: 1rem;
+}
+
+.trash-notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem;
+}

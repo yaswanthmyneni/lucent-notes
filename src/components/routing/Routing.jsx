@@ -5,6 +5,7 @@ import {
   NotesPage,
   SignInPage,
   SignUpPage,
+  TrashPage,
 } from "pages";
 import { RequireAuth } from "components";
 
@@ -20,6 +21,14 @@ const Routing = () => {
         element={
           <RequireAuth>
             <NotesPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/trash"
+        element={
+          <RequireAuth>
+            <TrashPage />
           </RequireAuth>
         }
       />
