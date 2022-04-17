@@ -1,7 +1,6 @@
 import { FaTrash } from "assets/icons/icons";
 import { useToastContext, useTrashContext } from "context";
 import { getUniqueNumber } from "utility";
-import "./TrashCard.css";
 
 const TrashCard = ({ note }) => {
   const { _id, title, description, dateAndTime } = note;
@@ -44,7 +43,7 @@ const TrashCard = ({ note }) => {
   };
 
   return (
-    <div className="trash-note-card">
+    <div className="common-note-card">
       <div className="flex space-between">
         <h4>{title}</h4>
       </div>
