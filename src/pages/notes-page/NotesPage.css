@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.notes-input-label {
+  width: 100%;
+}
+
 .notes-input {
   width: 86%;
   border: 0;
