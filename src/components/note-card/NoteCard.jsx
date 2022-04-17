@@ -29,10 +29,15 @@ const NoteCard = ({ note }) => {
           <MdOutlineEdit
             className="cursor edit-icon"
             onClick={() => {
-              notesDispatch({ type: "DISPLAY_MODAL", payload: true });
-              notesDispatch({ type: "NOTE_ID", payload: _id });
-              notesDispatch({ type: "TITLE", payload: title });
-              notesDispatch({ type: "DESCRIPTION", payload: description });
+              notesDispatch({
+                type: "ON_CLICK_EDIT_ICON",
+                payload: {
+                  title: title,
+                  description: description,
+                  isDisplayModal: true,
+                  noteId: _id,
+                },
+              });
             }}
           />
           <MdArchive className="cursor archive-icon" />

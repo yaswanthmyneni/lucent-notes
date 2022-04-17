@@ -15,6 +15,8 @@ const notesReducer = (state, { type, payload }) => {
       return { ...state, description: payload };
     case "NOTE_ID":
       return { ...state, noteId: payload };
+    case "ON_CLICK_EDIT_ICON":
+      return { ...state, ...payload };
     case "CLEAR_NOTES_INPUTS":
       return {
         ...state,
