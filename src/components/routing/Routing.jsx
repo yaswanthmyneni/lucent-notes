@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import {
+  ArchivePage,
   LandingPage,
   LogoutPage,
   NotesPage,
@@ -29,6 +30,14 @@ const Routing = () => {
         element={
           <RequireAuth>
             <TrashPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/archive"
+        element={
+          <RequireAuth>
+            <ArchivePage />
           </RequireAuth>
         }
       />

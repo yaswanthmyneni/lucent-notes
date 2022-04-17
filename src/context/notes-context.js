@@ -9,6 +9,9 @@ const notesReducer = (state, { type, payload }) => {
       return { ...state, user: payload };
     case "NOTES":
       return { ...state, user: { ...state.user, notes: payload } };
+    case "ADD_TO_ARCHIVE":
+    case "UPDATE_ARCHIVE":
+      return { ...state, user: { ...state.user, archives: payload } };
     case "TITLE":
       return { ...state, title: payload };
     case "DESCRIPTION":

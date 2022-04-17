@@ -11,7 +11,7 @@ const getDateAndTime = () => {
   return dateAndTime;
 };
 
-const getNotes = async (notesDispatch, toastDispatch, user) => {
+const getNotes = async (notesDispatch, toastDispatch) => {
   try {
     const encodedToken = localStorage.getItem("token");
     const response = await axios({
@@ -53,7 +53,7 @@ const addToNotes = async (event, notesState, notesDispatch, toastDispatch) => {
       });
     }
 
-    if (Object.keys(user).length > 1) {
+    if (user._id) {
       const response = await axios({
         method: "POST",
         url: "/api/notes",

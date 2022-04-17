@@ -7,3 +7,4 @@ export { AsideBar } from "./aside-bar/AsideBar";
 export { NoteModal } from "./note-modal/NoteModal";
 export { NoteCard } from "./note-card/NoteCard";
 export { TrashCard } from "./trash-card/TrashCard";
+export { ArchiveCard } from "./archive-card/ArchiveCard";
