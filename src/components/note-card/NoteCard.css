@@ -1,38 +1,36 @@
 .note-card {
   width: 90%;
   padding: 1rem;
-  border: 2px solid var(--color-gray);
+  border: 2px solid var(--color-black);
   border-radius: 5px;
+}
+
+.note-badge-text {
+  position: static;
+  width: fit-content;
+  padding: 2px 12px;
 }
 
 .edit-icon {
   font-size: 1.38rem;
   padding-bottom: 2.5px;
+  color: var(--color-icon);
 }
 
 .archive-icon {
   font-size: 1.34rem;
   padding-bottom: 2.5px;
+  color: var(--color-icon);
 }
 
 .trash-icon {
   font-size: 1.05rem;
   padding-bottom: 3.3px;
-}
-
-.trash-icon:hover {
-  color: var(--color-red);
-}
-
-.archive-icon:hover {
-  color: var(--color-archive);
+  color: var(--color-icon);
 }
 
 .label-icon {
   font-size: 1.38rem;
   padding-bottom: 2.5px;
-}
-
-.label-icon:hover {
-  color: var(--color-label);
+  color: var(--color-icon);
 }

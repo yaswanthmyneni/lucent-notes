@@ -14,3 +14,8 @@
 .note-modal-input {
   width: 98%;
 }
+
+.color-pallette-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}

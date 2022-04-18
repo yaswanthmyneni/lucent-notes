@@ -3,7 +3,7 @@ import { useToastContext, useTrashContext } from "context";
 import { getUniqueNumber } from "utility";
 
 const TrashCard = ({ note }) => {
-  const { _id, title, description, dateAndTime } = note;
+  const { _id, title, description, label, backgroundColor, dateAndTime } = note;
 
   // from trash context
   const {
@@ -43,11 +43,12 @@ const TrashCard = ({ note }) => {
   };
 
   return (
-    <div className="common-note-card">
+    <div className={`common-note-card ${backgroundColor}`}>
       <div className="flex space-between">
         <h4>{title}</h4>
       </div>
       <p>{description}</p>
+      <small className="badge-text flex-badge note-badge-text">{label}</small>
       <div className="flex space-between">
         <h6 className="text-gray m-r-1rem">Created on {dateAndTime}</h6>
         <FaTrash

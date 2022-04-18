@@ -35,11 +35,17 @@ const getNotes = async (notesDispatch, toastDispatch) => {
   }
 };
 
-const addToNotes = async (event, notesState, notesDispatch, toastDispatch) => {
+const addToNotes = async (
+  event,
+  notesState,
+  label,
+  notesDispatch,
+  toastDispatch
+) => {
   try {
     event.preventDefault();
     const dateAndTime = getDateAndTime();
-    const { title, description, user } = notesState;
+    const { title, description, backgroundColor, user } = notesState;
     const encodedToken = localStorage.getItem("token");
 
     if (title === "" && description === "") {
@@ -59,7 +65,7 @@ const addToNotes = async (event, notesState, notesDispatch, toastDispatch) => {
         url: "/api/notes",
         headers: { authorization: encodedToken },
         data: {
-          note: { title, description, dateAndTime },
+          note: { title, description, label, backgroundColor, dateAndTime },
         },
       });
 
@@ -99,18 +105,24 @@ const addToNotes = async (event, notesState, notesDispatch, toastDispatch) => {
   }
 };
 
-const editNote = async (event, notesState, notesDispatch, toastDispatch) => {
+const editNote = async (
+  event,
+  notesState,
+  label,
+  notesDispatch,
+  toastDispatch
+) => {
   try {
     event.preventDefault();
     const encodedToken = localStorage.getItem("token");
-    const { noteId, title, description } = notesState;
+    const { noteId, title, description, backgroundColor } = notesState;
 
     const response = await axios({
       method: "post",
       url: `/api/notes/${noteId}`,
       headers: { authorization: encodedToken },
       data: {
-        note: { title, description },
+        note: { title, description, label, backgroundColor },
       },
     });
 

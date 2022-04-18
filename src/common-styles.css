@@ -1,7 +1,7 @@
 :root {
   --z-index-toast-27: 27;
-  --color-archive: #8b008b;
-  --color-label: #6c61f6;
+  --color-tickle-pink: #F786AA;
+  --color-icon: #24292d;
 }
 
 body {
@@ -82,7 +82,7 @@ body {
 .common-note-card {
   width: 20rem;
   padding: 1rem;
-  border: 2px solid var(--color-gray);
+  border: 2px solid var(--color-black);
   border-radius: 5px;
 }
 
