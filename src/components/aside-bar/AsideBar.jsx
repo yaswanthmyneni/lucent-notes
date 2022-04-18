@@ -4,13 +4,14 @@ import {
   BsArchive,
   FiTrash,
 } from "assets/icons/icons";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useNotesContext } from "context";
 import clsx from "clsx";
 import "./AsideBar.css";
 
 const AsideBar = () => {
   const { notesDispatch } = useNotesContext();
+  const { pathname } = useLocation();
 
   return (
     <aside className="aside-bar">
@@ -59,12 +60,16 @@ const AsideBar = () => {
           Trash
         </NavLink>
       </ul>
-      <button
-        className="btn btn-primary aside-btn"
-        onClick={() => notesDispatch({ type: "DISPLAY_MODAL", payload: true })}
-      >
-        create new note
-      </button>
+      {pathname === "/notes" && (
+        <button
+          className="btn btn-primary aside-btn"
+          onClick={() =>
+            notesDispatch({ type: "DISPLAY_MODAL", payload: true })
+          }
+        >
+          create new note
+        </button>
+      )}
     </aside>
   );
 };

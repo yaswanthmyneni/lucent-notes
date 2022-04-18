@@ -1,20 +1,20 @@
 import { AsideBar, TrashCard } from "components";
 import { useTrashContext } from "context";
-import "./TrashPage.css";
 
 const TrashPage = () => {
   // from trash context
   const {
     trashState: { trashNotes },
   } = useTrashContext();
+  
   return (
     <div className="page-wrapper">
       <AsideBar />
-      <main className="trash-page-main">
+      <main className="page-main">
         {trashNotes?.length > 0 ? (
           <>
             <h3>Trash Notes</h3>
-            <div className="trash-notes-container">
+            <div className="notes-container">
               {trashNotes.map((note) => (
                 <TrashCard key={note._id} note={note} />
               ))}

@@ -66,6 +66,27 @@ body {
   margin-top: 1rem;
 }
 
+/* For Pages */
+.page-main {
+  margin: 1rem;
+}
+
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+/* For cards */
+.common-note-card {
+  width: 20rem;
+  padding: 1rem;
+  border: 2px solid var(--color-gray);
+  border-radius: 5px;
+}
+
+/* For Wrapping Page  */
 .page-wrapper {
   display: grid;
   grid-template-columns: 16rem 1fr;

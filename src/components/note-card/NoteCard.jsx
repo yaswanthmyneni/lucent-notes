@@ -6,13 +6,19 @@ import {
   MdLabel,
 } from "assets/icons/icons";
 import { useNotesContext, useToastContext, useTrashContext } from "context";
-import { deleteNote } from "utility";
+import { addToArchive, deleteNote } from "utility";
 import "./NoteCard.css";
 
 const NoteCard = ({ note }) => {
   const { _id, title, description, dateAndTime } = note;
+
+  // from notes context
   const { notesDispatch } = useNotesContext();
+
+  // from toast context
   const { toastDispatch } = useToastContext();
+
+  // from trash context
   const { trashDispatch } = useTrashContext();
 
   return (
@@ -40,7 +46,10 @@ const NoteCard = ({ note }) => {
               });
             }}
           />
-          <MdArchive className="cursor archive-icon" />
+          <MdArchive
+            className="cursor archive-icon"
+            onClick={() => addToArchive(note, notesDispatch, toastDispatch)}
+          />
           <FaTrash
             className="cursor trash-icon"
             onClick={() =>
