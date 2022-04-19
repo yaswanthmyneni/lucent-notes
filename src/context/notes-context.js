@@ -16,6 +16,8 @@ const notesReducer = (state, { type, payload }) => {
       return { ...state, title: payload };
     case "DESCRIPTION":
       return { ...state, description: payload };
+    case "LABEL_FOR_NOTE":
+      return { ...state, labelForNote: payload };
     case "NOTE_ID":
       return { ...state, noteId: payload };
     case "ON_CLICK_EDIT_ICON":
@@ -25,10 +27,14 @@ const notesReducer = (state, { type, payload }) => {
         ...state,
         title: "",
         description: "",
+        labelForNote: "",
+        backgroundColor: "",
         noteId: null,
       };
     case "DISPLAY_MODAL":
       return { ...state, isDisplayModal: payload };
+    case "SET_COLOR":
+      return { ...state, backgroundColor: payload };
     default:
       return state;
   }
@@ -41,6 +47,8 @@ const NotesProvider = ({ children }) => {
     description: "",
     noteId: null,
     isDisplayModal: false,
+    backgroundColor: "",
+    labelForNote: "",
   });
 
   const value = { notesState, notesDispatch };

@@ -1,0 +1,45 @@
+.color-modal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  width: 6rem;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: var(--color-black);
+
+  position: fixed;
+  right: 11rem;
+  bottom: -4rem;
+}
+
+.colors {
+  width: 1.3rem;
+  height: 1.3rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.background-color-green-300 {
+  background-color: var(--color-green-300);
+}
+
+.background-color-pink {
+  background-color: var(--color-tickle-pink);
+}
+
+.background-color-orange-200 {
+  background-color: var(--color-orange-200);
+}
+
+.background-color-orange {
+  background-color: var(--color-orange);
+}
+
+.background-color-red-800 {
+  background-color: var(--color-red-800);
+}
+
+.background-color-blue-300 {
+  background-color: var(--color-blue-300);
+}

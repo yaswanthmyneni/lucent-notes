@@ -1,9 +1,9 @@
-import { MdArchive, FaTrash } from "assets/icons/icons";
+import { MdUnarchive, FaTrash } from "assets/icons/icons";
 import { useNotesContext, useToastContext, useTrashContext } from "context";
 import { deleteNoteFromArchive, restoreArchivedNote } from "utility";
 
 const ArchiveCard = ({ note }) => {
-  const { title, description, dateAndTime } = note;
+  const { title, description, label, backgroundColor, dateAndTime } = note;
 
   // from notes context
   const { notesDispatch } = useNotesContext();
@@ -15,14 +15,15 @@ const ArchiveCard = ({ note }) => {
   const { trashDispatch } = useTrashContext();
 
   return (
-    <div className="common-note-card">
+    <div className={`common-note-card ${backgroundColor}`}>
       <div className="flex space-between">
         <h4>{title}</h4>
       </div>
       <p>{description}</p>
+      <small className="badge-text flex-badge note-badge-text">{label}</small>
       <div className="flex space-between">
         <h6 className="text-gray m-r-1rem">Created on {dateAndTime}</h6>
-        <MdArchive
+        <MdUnarchive
           className="cursor archive-icon"
           onClick={() =>
             restoreArchivedNote(note, notesDispatch, toastDispatch)

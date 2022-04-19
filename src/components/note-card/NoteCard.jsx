@@ -10,7 +10,7 @@ import { addToArchive, deleteNote } from "utility";
 import "./NoteCard.css";
 
 const NoteCard = ({ note }) => {
-  const { _id, title, description, dateAndTime } = note;
+  const { _id, title, description, label, backgroundColor, dateAndTime } = note;
 
   // from notes context
   const { notesDispatch } = useNotesContext();
@@ -22,12 +22,13 @@ const NoteCard = ({ note }) => {
   const { trashDispatch } = useTrashContext();
 
   return (
-    <div className="note-card">
+    <div className={`note-card ${backgroundColor}`}>
       <div className="flex space-between">
         <h4>{title}</h4>
         <BsPin className="cursor" />
       </div>
       <p>{description}</p>
+      <small className="badge-text flex-badge note-badge-text">{label}</small>
       <div className="flex space-between">
         <h6 className="text-gray m-r-1rem">Created on {dateAndTime}</h6>
         <div className="flex gap-1rem">
@@ -40,8 +41,10 @@ const NoteCard = ({ note }) => {
                 payload: {
                   title: title,
                   description: description,
+                  labelForNote: label,
                   isDisplayModal: true,
                   noteId: _id,
+                  backgroundColor: backgroundColor,
                 },
               });
             }}

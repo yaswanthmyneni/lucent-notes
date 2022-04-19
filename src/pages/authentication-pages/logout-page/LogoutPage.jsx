@@ -11,7 +11,7 @@ const LogoutPage = () => {
           <p
             className="btn btn-primary text-lg cursor"
             onClick={() =>
-              navigate("/signin", { state: { from: { pathname: "/" } } })
+              navigate("/signin", { state: { from: { pathname: "/notes" } } })
             }
           >
             Login
