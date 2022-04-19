@@ -16,6 +16,8 @@ const NoteModal = () => {
   // from toast context
   const { toastDispatch } = useToastContext();
 
+  const listOfLabels = ["office", "food", "home"];
+
   return (
     <>
       <div id="modal-bg" className="modal-bg"></div>
@@ -43,42 +45,20 @@ const NoteModal = () => {
           </label>
           <h3 className="m-t-1rem">Labels</h3>
           <div className="flex flex-start gap-1rem">
-            <label htmlFor="office" className="cursor">
-              <input
-                type="radio"
-                name="label"
-                id="office"
-                checked={labelForNote === "office"}
-                onChange={() =>
-                  notesDispatch({ type: "LABEL_FOR_NOTE", payload: "office" })
-                }
-              />
-              Office
-            </label>
-            <label htmlFor="food" className="cursor">
-              <input
-                type="radio"
-                name="label"
-                id="food"
-                checked={labelForNote === "food"}
-                onChange={() =>
-                  notesDispatch({ type: "LABEL_FOR_NOTE", payload: "food" })
-                }
-              />
-              Food
-            </label>
-            <label htmlFor="home" className="cursor">
-              <input
-                type="radio"
-                name="label"
-                id="home"
-                checked={labelForNote === "home"}
-                onChange={() =>
-                  notesDispatch({ type: "LABEL_FOR_NOTE", payload: "home" })
-                }
-              />
-              Home
-            </label>
+            {listOfLabels.map((label) => (
+              <label key={label} htmlFor={label} className="note-modal-label">
+                <input
+                  type="radio"
+                  name="label"
+                  id={label}
+                  checked={labelForNote === label}
+                  onChange={() =>
+                    notesDispatch({ type: "LABEL_FOR_NOTE", payload: label })
+                  }
+                />
+                {label}
+              </label>
+            ))}
           </div>
           <h3 className="m-t-1rem">Description</h3>
           <label htmlFor="description">

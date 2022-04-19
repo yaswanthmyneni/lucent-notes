@@ -28,6 +28,7 @@ const ColorPalletteModal = ({ setIsColorsModal }) => {
     <div className="color-modal">
       {colors.map((className) => (
         <div
+          key={className}
           className={`colors ${className}`}
           onClick={(e) => setColorToNote(e, notesDispatch)}
         ></div>

@@ -15,6 +15,12 @@
   width: 98%;
 }
 
+.note-modal-label {
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
 .color-pallette-icon {
   font-size: 1.5rem;
   cursor: pointer;
