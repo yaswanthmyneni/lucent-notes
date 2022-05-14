@@ -71,6 +71,10 @@ body {
   margin-right: 1rem;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .m-t-1rem {
   margin-top: 1rem;
 }
@@ -93,6 +97,8 @@ body {
   padding: 1rem;
   border: 2px solid var(--color-black);
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* For Wrapping Page  */

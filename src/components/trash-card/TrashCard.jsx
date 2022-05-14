@@ -50,22 +50,40 @@ const TrashCard = ({ note }) => {
     }
   };
 
+  // formatting date
+  const newDate = new Date(dateAndTime);
+  const date =
+    newDate.getDate() +
+    "/" +
+    (newDate.getMonth() + 1) +
+    "/" +
+    newDate.getFullYear();
+  const time =
+    newDate.getHours() +
+    ":" +
+    newDate.getMinutes() +
+    ":" +
+    newDate.getSeconds();
+  const dateAndTimeFormat = date + " at " + time;
+
   return (
     <div className={`common-note-card ${backgroundColor}`}>
       <div className="flex space-between">
         <h4 className="m-0">{title}</h4>
       </div>
       <p>{description}</p>
-      <div className="flex flex-start gap-1rem">
-        <small className="badge-text note-badge-text">{label}</small>
-        <small className="badge-text note-badge-text">{priority}</small>
-      </div>
-      <div className="flex space-between mt-8px">
-        <h6 className="text-gray m-r-1rem">Created on {dateAndTime}</h6>
-        <FaTrash
-          className="cursor trash-icon"
-          onClick={() => deleteNoteFromTrash(_id, trashNotes, trashDispatch)}
-        />
+      <div className="mt-auto">
+        <div className="flex flex-start gap-1rem">
+          <small className="badge-text note-badge-text">{label}</small>
+          <small className="badge-text note-badge-text">{priority}</small>
+        </div>
+        <div className="flex space-between mt-8px">
+          <h6 className="text-gray m-r-1rem">Created on {dateAndTimeFormat}</h6>
+          <FaTrash
+            className="cursor trash-icon"
+            onClick={() => deleteNoteFromTrash(_id, trashNotes, trashDispatch)}
+          />
+        </div>
       </div>
     </div>
   );
