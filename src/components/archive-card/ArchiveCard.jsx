@@ -17,7 +17,7 @@ const ArchiveCard = ({ note }) => {
   return (
     <div className={`common-note-card ${backgroundColor}`}>
       <div className="flex space-between">
-        <h4>{title}</h4>
+        <h4 className='m-0'>{title}</h4>
       </div>
       <p>{description}</p>
       <small className="badge-text flex-badge note-badge-text">{label}</small>
