@@ -9,3 +9,4 @@ export { NoteCard } from "./note-card/NoteCard";
 export { TrashCard } from "./trash-card/TrashCard";
 export { ArchiveCard } from "./archive-card/ArchiveCard";
 export { ColorPalletteModal } from "./color-pallette-modal/ColorPalletteModal";
+export { FilterModal } from "./filter-modal/FilterModal";

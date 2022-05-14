@@ -1,9 +1,4 @@
-import {
-  BsPin,
-  MdArchive,
-  FaTrash,
-  MdOutlineEdit,
-} from "assets/icons/icons";
+import { BsPin, MdArchive, FaTrash, MdOutlineEdit } from "assets/icons/icons";
 import { useNotesContext, useToastContext, useTrashContext } from "context";
 import { addToArchive, deleteNote } from "utility";
 import "./NoteCard.css";
@@ -28,10 +23,26 @@ const NoteCard = ({ note }) => {
   // from trash context
   const { trashDispatch } = useTrashContext();
 
+  // formatting date
+  const newDate = new Date(dateAndTime);
+  const date =
+    newDate.getDate() +
+    "/" +
+    (newDate.getMonth() + 1) +
+    "/" +
+    newDate.getFullYear();
+  const time =
+    newDate.getHours() +
+    ":" +
+    newDate.getMinutes() +
+    ":" +
+    newDate.getSeconds();
+  const dateAndTimeFormat = date + " at " + time;
+
   return (
     <div className={`note-card ${backgroundColor}`}>
       <div className="flex space-between">
-        <h4 className='m-0'>{title}</h4>
+        <h4 className="m-0">{title}</h4>
         <BsPin className="cursor-not-allowed" />
       </div>
       <p>{description}</p>
@@ -40,7 +51,7 @@ const NoteCard = ({ note }) => {
         <small className="badge-text note-badge-text">{priority}</small>
       </div>
       <div className="flex space-between mt-8px">
-        <h6 className="text-gray m-r-1rem">Created on {dateAndTime}</h6>
+        <h6 className="text-gray m-r-1rem">Created on {dateAndTimeFormat}</h6>
         <div className="flex gap-1rem">
           <MdOutlineEdit
             className="cursor edit-icon"
