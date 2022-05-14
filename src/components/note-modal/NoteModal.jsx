@@ -10,13 +10,14 @@ const NoteModal = () => {
 
   // from notes context
   const { notesState, notesDispatch } = useNotesContext();
-  const { title, description, labelForNote, noteId, backgroundColor } =
+  const { title, description, labelForNote, noteId, backgroundColor, priorityForNote } =
     notesState;
 
   // from toast context
   const { toastDispatch } = useToastContext();
 
   const listOfLabels = ["office", "food", "home"];
+  const listOfPriorities = ["low", "medium", "high"];
 
   return (
     <>
@@ -60,6 +61,27 @@ const NoteModal = () => {
               </label>
             ))}
           </div>
+          <h3 className="m-t-1rem">Priority</h3>
+          <div className="flex flex-start gap-1rem">
+            {listOfPriorities.map((priority) => (
+              <label
+                key={priority}
+                htmlFor={priority}
+                className="note-modal-label"
+              >
+                <input
+                  type="radio"
+                  name="priority"
+                  id={priority}
+                  checked={priorityForNote === priority}
+                  onChange={() =>
+                    notesDispatch({ type: "PRIORITY", payload: priority })
+                  }
+                />
+                {priority}
+              </label>
+            ))}
+          </div>
           <h3 className="m-t-1rem">Description</h3>
           <label htmlFor="description">
             <textarea
@@ -85,6 +107,7 @@ const NoteModal = () => {
                     event,
                     notesState,
                     labelForNote,
+                    priorityForNote,
                     notesDispatch,
                     toastDispatch
                   )
@@ -100,6 +123,7 @@ const NoteModal = () => {
                     event,
                     notesState,
                     labelForNote,
+                    priorityForNote,
                     notesDispatch,
                     toastDispatch
                   )

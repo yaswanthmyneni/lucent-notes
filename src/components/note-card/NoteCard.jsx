@@ -3,14 +3,21 @@ import {
   MdArchive,
   FaTrash,
   MdOutlineEdit,
-  MdLabel,
 } from "assets/icons/icons";
 import { useNotesContext, useToastContext, useTrashContext } from "context";
 import { addToArchive, deleteNote } from "utility";
 import "./NoteCard.css";
 
 const NoteCard = ({ note }) => {
-  const { _id, title, description, label, backgroundColor, dateAndTime } = note;
+  const {
+    _id,
+    title,
+    description,
+    label,
+    priority,
+    backgroundColor,
+    dateAndTime,
+  } = note;
 
   // from notes context
   const { notesDispatch } = useNotesContext();
@@ -24,15 +31,17 @@ const NoteCard = ({ note }) => {
   return (
     <div className={`note-card ${backgroundColor}`}>
       <div className="flex space-between">
-        <h4>{title}</h4>
-        <BsPin className="cursor" />
+        <h4 className='m-0'>{title}</h4>
+        <BsPin className="cursor-not-allowed" />
       </div>
       <p>{description}</p>
-      <small className="badge-text flex-badge note-badge-text">{label}</small>
-      <div className="flex space-between">
+      <div className="flex flex-start gap-1rem">
+        <small className="badge-text note-badge-text">{label}</small>
+        <small className="badge-text note-badge-text">{priority}</small>
+      </div>
+      <div className="flex space-between mt-8px">
         <h6 className="text-gray m-r-1rem">Created on {dateAndTime}</h6>
         <div className="flex gap-1rem">
-          <MdLabel className="cursor label-icon" />
           <MdOutlineEdit
             className="cursor edit-icon"
             onClick={() => {
@@ -42,6 +51,7 @@ const NoteCard = ({ note }) => {
                   title: title,
                   description: description,
                   labelForNote: label,
+                  priorityForNote: priority,
                   isDisplayModal: true,
                   noteId: _id,
                   backgroundColor: backgroundColor,

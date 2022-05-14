@@ -39,6 +39,7 @@ const addToNotes = async (
   event,
   notesState,
   label,
+  priority,
   notesDispatch,
   toastDispatch
 ) => {
@@ -65,7 +66,7 @@ const addToNotes = async (
         url: "/api/notes",
         headers: { authorization: encodedToken },
         data: {
-          note: { title, description, label, backgroundColor, dateAndTime },
+          note: { title, description, label, priority, backgroundColor, dateAndTime },
         },
       });
 
@@ -109,6 +110,7 @@ const editNote = async (
   event,
   notesState,
   label,
+  priority,
   notesDispatch,
   toastDispatch
 ) => {
@@ -122,7 +124,7 @@ const editNote = async (
       url: `/api/notes/${noteId}`,
       headers: { authorization: encodedToken },
       data: {
-        note: { title, description, label, backgroundColor },
+        note: { title, description, label, priority, backgroundColor },
       },
     });
 
