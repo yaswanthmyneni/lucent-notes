@@ -25,9 +25,9 @@ const FilterModal = ({ setIsFilter }) => {
         </button>
       </div>
       <div className="flex gap-1rem flex-start">
-        {listOfLabels.map((singleLabel) => (
+        {listOfLabels.map((singleLabel, index) => (
           <label
-            key={singleLabel}
+            key={index}
             htmlFor={`${singleLabel}-filter`}
             className="note-modal-label"
           >
@@ -48,9 +48,9 @@ const FilterModal = ({ setIsFilter }) => {
       </div>
       <h4>Priorities:</h4>
       <div className="flex gap-1rem flex-start">
-        {listOfPriorities.map((singlePriority) => (
+        {listOfPriorities.map((singlePriority, index) => (
           <label
-            key={singlePriority}
+            key={index}
             htmlFor={`${singlePriority}-filter`}
             className="note-modal-label"
           >
