@@ -34,7 +34,7 @@ const FilterModal = ({ setIsFilter }) => {
             <input
               type="checkbox"
               id={`${singleLabel}-filter`}
-              checked={label[singleLabel] === true}
+              checked={label[singleLabel]}
               onChange={(e) =>
                 notesDispatch({
                   type: "SET_LABEL",
@@ -57,7 +57,7 @@ const FilterModal = ({ setIsFilter }) => {
             <input
               type="checkbox"
               id={`${singlePriority}-filter`}
-              checked={priority[singlePriority] === true}
+              checked={priority[singlePriority]}
               onChange={(e) =>
                 notesDispatch({
                   type: "SET_PRIORITY",
@@ -88,6 +88,7 @@ const FilterModal = ({ setIsFilter }) => {
             type="radio"
             id="old"
             name="sortByDate"
+            checked={!sortByLatest}
             onChange={() =>
               notesDispatch({ type: "SET_LATEST", payload: false })
             }
