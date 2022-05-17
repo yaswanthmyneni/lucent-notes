@@ -29,7 +29,7 @@ const AsideBar = () => {
         <NavLink
           to="/label"
           className={({ isActive }) =>
-            clsx("aside-link flex flex-start cursor", {
+            clsx("aside-link flex flex-start cursor-not-allowed", {
               "active-link": isActive,
             })
           }

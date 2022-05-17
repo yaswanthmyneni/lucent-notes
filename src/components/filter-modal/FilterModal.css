@@ -1,0 +1,16 @@
+.filter {
+    width: 20rem;
+    padding: 1rem;
+    border: 2px solid var(--color-icon);
+    border-radius: 5px;
+    background-color: var(--color-green-100);
+    position: absolute;
+    top: 2.5rem;
+    right: 3.8rem;
+}
+
+.btn-clear {
+    color: var(--color-white);
+    background-color: var(--color-red);
+    padding: 0.3em 0.8em;
+}

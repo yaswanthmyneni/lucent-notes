@@ -1,16 +1,6 @@
 import axios from "axios";
 import { getUniqueNumber } from "./common-functions";
 
-const getDateAndTime = () => {
-  const today = new Date();
-  const date =
-    today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
-  const time =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  const dateAndTime = date + " at " + time;
-  return dateAndTime;
-};
-
 const getNotes = async (notesDispatch, toastDispatch) => {
   try {
     const encodedToken = localStorage.getItem("token");
@@ -39,12 +29,13 @@ const addToNotes = async (
   event,
   notesState,
   label,
+  priority,
   notesDispatch,
   toastDispatch
 ) => {
   try {
     event.preventDefault();
-    const dateAndTime = getDateAndTime();
+    const dateAndTime = new Date();
     const { title, description, backgroundColor, user } = notesState;
     const encodedToken = localStorage.getItem("token");
 
@@ -65,7 +56,14 @@ const addToNotes = async (
         url: "/api/notes",
         headers: { authorization: encodedToken },
         data: {
-          note: { title, description, label, backgroundColor, dateAndTime },
+          note: {
+            title,
+            description,
+            label,
+            priority,
+            backgroundColor,
+            dateAndTime,
+          },
         },
       });
 
@@ -109,6 +107,7 @@ const editNote = async (
   event,
   notesState,
   label,
+  priority,
   notesDispatch,
   toastDispatch
 ) => {
@@ -122,7 +121,7 @@ const editNote = async (
       url: `/api/notes/${noteId}`,
       headers: { authorization: encodedToken },
       data: {
-        note: { title, description, label, backgroundColor },
+        note: { title, description, label, priority, backgroundColor },
       },
     });
 

@@ -1,4 +1,5 @@
 :root {
+  --z-index-header-30: 30;
   --z-index-toast-27: 27;
   --color-tickle-pink: #F786AA;
   --color-icon: #24292d;
@@ -46,6 +47,10 @@ body {
   cursor: pointer;
 }
 
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
 .width-fc {
   width: fit-content;
 }
@@ -58,8 +63,16 @@ body {
   color: var(--color-red);
 }
 
+.m-0 {
+  margin: 0;
+}
+
 .m-r-1rem {
   margin-right: 1rem;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .m-t-1rem {
@@ -84,6 +97,8 @@ body {
   padding: 1rem;
   border: 2px solid var(--color-black);
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* For Wrapping Page  */

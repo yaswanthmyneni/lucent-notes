@@ -3,6 +3,20 @@ import { createContext, useContext, useReducer } from "react";
 const NotesContext = createContext();
 const useNotesContext = () => useContext(NotesContext);
 
+const initialFilterState = {
+  label: {
+    home: false,
+    food: false,
+    office: false,
+  },
+  priority: {
+    low: false,
+    medium: false,
+    high: false,
+  },
+  sortByLatest: true,
+};
+
 const notesReducer = (state, { type, payload }) => {
   switch (type) {
     case "USER":
@@ -18,6 +32,8 @@ const notesReducer = (state, { type, payload }) => {
       return { ...state, description: payload };
     case "LABEL_FOR_NOTE":
       return { ...state, labelForNote: payload };
+    case "PRIORITY":
+      return { ...state, priorityForNote: payload };
     case "NOTE_ID":
       return { ...state, noteId: payload };
     case "ON_CLICK_EDIT_ICON":
@@ -28,6 +44,7 @@ const notesReducer = (state, { type, payload }) => {
         title: "",
         description: "",
         labelForNote: "",
+        priorityForNote: "",
         backgroundColor: "",
         noteId: null,
       };
@@ -35,6 +52,17 @@ const notesReducer = (state, { type, payload }) => {
       return { ...state, isDisplayModal: payload };
     case "SET_COLOR":
       return { ...state, backgroundColor: payload };
+    case "SET_LABEL":
+      return { ...state, label: { ...state.label, ...payload } };
+    case "SET_PRIORITY":
+      return { ...state, priority: { ...state.priority, ...payload } };
+    case "SET_LATEST":
+      return { ...state, sortByLatest: payload };
+    case "RESET_FILTERS":
+      return {
+        ...state,
+        ...initialFilterState,
+      };
     default:
       return state;
   }
@@ -49,6 +77,8 @@ const NotesProvider = ({ children }) => {
     isDisplayModal: false,
     backgroundColor: "",
     labelForNote: "",
+    priorityForNote: "",
+    ...initialFilterState,
   });
 
   const value = { notesState, notesDispatch };
