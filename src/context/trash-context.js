@@ -5,9 +5,8 @@ const useTrashContext = () => useContext(TrashContext);
 
 const trashReducer = (state, { type, payload }) => {
   switch (type) {
-    case "ADD_TO_TRASH":
-      return { ...state, trashNotes: [...state.trashNotes, payload] };
-    case "DELETE_FROM_TRASH":
+    case "GET_ALL_TRASH_NOTES":
+    case "UPDATE_TRASH_NOTES":
       return { ...state, trashNotes: payload };
     default:
       return state;

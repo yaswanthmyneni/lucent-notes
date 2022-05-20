@@ -1,6 +1,6 @@
 import { BsPin, MdArchive, FaTrash, MdOutlineEdit } from "assets/icons/icons";
 import { useNotesContext, useToastContext, useTrashContext } from "context";
-import { addToArchive, deleteNote } from "utility";
+import { addToArchive, addToTrash } from "utility";
 import "./NoteCard.css";
 
 const NoteCard = ({ note }) => {
@@ -17,11 +17,11 @@ const NoteCard = ({ note }) => {
   // from notes context
   const { notesDispatch } = useNotesContext();
 
-  // from toast context
-  const { toastDispatch } = useToastContext();
-
   // from trash context
   const { trashDispatch } = useTrashContext();
+
+  // from toast context
+  const { toastDispatch } = useToastContext();
 
   // formatting date
   const newDate = new Date(dateAndTime);
@@ -75,9 +75,9 @@ const NoteCard = ({ note }) => {
             onClick={() => addToArchive(note, notesDispatch, toastDispatch)}
           />
           <FaTrash
-            className="cursor trash-icon"
+            className="cursor delete-icon"
             onClick={() =>
-              deleteNote(note, notesDispatch, trashDispatch, toastDispatch)
+              addToTrash(_id, notesDispatch, trashDispatch, toastDispatch)
             }
           />
         </div>

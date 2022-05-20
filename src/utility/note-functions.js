@@ -151,30 +151,23 @@ const editNote = async (
   }
 };
 
-const deleteNote = async (
-  note,
-  notesDispatch,
-  trashDispatch,
-  toastDispatch
-) => {
+const deleteNote = async (noteId, notesDispatch, toastDispatch) => {
   try {
     const encodedToken = localStorage.getItem("token");
-    const { _id } = note;
     const response = await axios({
       method: "delete",
-      url: `/api/notes/${_id}`,
+      url: `/api/notes/${noteId}`,
       headers: { authorization: encodedToken },
     });
 
     if (response.status === 200) {
-      trashDispatch({ type: "ADD_TO_TRASH", payload: note });
       notesDispatch({ type: "NOTES", payload: response.data.notes });
       toastDispatch({
         type: "ADD_TOAST",
         payload: {
           id: getUniqueNumber(),
           className: "toast-success",
-          message: "note is moved trash page",
+          message: "note is deleted successfully",
         },
       });
     }

@@ -1,5 +1,5 @@
 import { MdUnarchive, FaTrash } from "assets/icons/icons";
-import { useNotesContext, useToastContext, useTrashContext } from "context";
+import { useNotesContext, useToastContext } from "context";
 import { deleteNoteFromArchive, restoreArchivedNote } from "utility";
 
 const ArchiveCard = ({ note }) => {
@@ -12,24 +12,21 @@ const ArchiveCard = ({ note }) => {
   // from toast context
   const { toastDispatch } = useToastContext();
 
-  // from trash context
-  const { trashDispatch } = useTrashContext();
-
-   // formatting date
-   const newDate = new Date(dateAndTime);
-   const date =
-     newDate.getDate() +
-     "/" +
-     (newDate.getMonth() + 1) +
-     "/" +
-     newDate.getFullYear();
-   const time =
-     newDate.getHours() +
-     ":" +
-     newDate.getMinutes() +
-     ":" +
-     newDate.getSeconds();
-   const dateAndTimeFormat = date + " at " + time;
+  // formatting date
+  const newDate = new Date(dateAndTime);
+  const date =
+    newDate.getDate() +
+    "/" +
+    (newDate.getMonth() + 1) +
+    "/" +
+    newDate.getFullYear();
+  const time =
+    newDate.getHours() +
+    ":" +
+    newDate.getMinutes() +
+    ":" +
+    newDate.getSeconds();
+  const dateAndTimeFormat = date + " at " + time;
 
   return (
     <div className={`common-note-card ${backgroundColor}`}>
@@ -37,7 +34,7 @@ const ArchiveCard = ({ note }) => {
         <h4 className="m-0">{title}</h4>
       </div>
       <p>{description}</p>
-      <div className='mt-auto'>
+      <div className="mt-auto">
         <div className="flex flex-start gap-1rem">
           <small className="badge-text note-badge-text">{label}</small>
           <small className="badge-text note-badge-text">{priority}</small>
@@ -51,14 +48,9 @@ const ArchiveCard = ({ note }) => {
             }
           />
           <FaTrash
-            className="cursor trash-icon"
+            className="cursor delete-icon"
             onClick={() =>
-              deleteNoteFromArchive(
-                note,
-                notesDispatch,
-                trashDispatch,
-                toastDispatch
-              )
+              deleteNoteFromArchive(note, notesDispatch, toastDispatch)
             }
           />
         </div>

@@ -1,22 +1,22 @@
 import axios from "axios";
 import { getUniqueNumber } from "./common-functions";
 
-const getArchivedNotes = async (notesDispatch, toastDispatch) => {
+const getAllTrashNotes = async (trashDispatch, toastDispatch) => {
   try {
     const encodedToken = localStorage.getItem("token");
     const response = await axios({
-      method: "get",
-      url: "/api/archives",
+      method: "GET",
+      url: "/api/trash",
       headers: { authorization: encodedToken },
     });
     if (response.status === 200) {
-      notesDispatch({
-        type: "ADD_TO_ARCHIVE",
-        payload: response.data.archives,
+      trashDispatch({
+        type: "GET_ALL_TRASH_NOTES",
+        payload: response.data.trash,
       });
     }
   } catch (error) {
-    console.error(error);
+    console.log(error);
     toastDispatch({
       type: "ADD_TOAST",
       payload: {
@@ -28,33 +28,39 @@ const getArchivedNotes = async (notesDispatch, toastDispatch) => {
   }
 };
 
-const addToArchive = async (note, notesDispatch, toastDispatch) => {
+const addToTrash = async (
+  notesId,
+  notesDispatch,
+  trashDispatch,
+  toastDispatch
+) => {
   try {
     const encodedToken = localStorage.getItem("token");
     const response = await axios({
       method: "post",
-      url: `/api/notes/archives/${note._id}`,
+      url: `/api/notes/trash/${notesId}`,
       headers: { authorization: encodedToken },
-      data: { note: note },
     });
-
     if (response.status === 201) {
-      notesDispatch({ type: "NOTES", payload: response.data.notes });
+      trashDispatch({
+        type: "GET_ALL_TRASH_NOTES",
+        payload: response.data.trash,
+      });
       notesDispatch({
-        type: "ADD_TO_ARCHIVE",
-        payload: response.data.archives,
+        type: "NOTES",
+        payload: response.data.notes,
       });
       toastDispatch({
         type: "ADD_TOAST",
         payload: {
           id: getUniqueNumber(),
           className: "toast-success",
-          message: "added to archive successfully",
+          message: "added to trash successfully",
         },
       });
     }
   } catch (error) {
-    console.error("console", error);
+    console.log(error);
     toastDispatch({
       type: "ADD_TOAST",
       payload: {
@@ -66,31 +72,39 @@ const addToArchive = async (note, notesDispatch, toastDispatch) => {
   }
 };
 
-const restoreArchivedNote = async (note, notesDispatch, toastDispatch) => {
+const restoreTrashedNote = async (
+  notesId,
+  notesDispatch,
+  trashDispatch,
+  toastDispatch
+) => {
   try {
     const encodedToken = localStorage.getItem("token");
     const response = await axios({
       method: "post",
-      url: `/api/archives/restore/${note._id}`,
+      url: `/api/trash/restore/${notesId}`,
       headers: { authorization: encodedToken },
     });
     if (response.status === 200) {
-      notesDispatch({ type: "NOTES", payload: response.data.notes });
+      trashDispatch({
+        type: "UPDATE_TRASH_NOTES",
+        payload: response.data.trash,
+      });
       notesDispatch({
-        type: "UPDATE_ARCHIVE",
-        payload: response.data.archives,
+        type: "NOTES",
+        payload: response.data.notes,
       });
       toastDispatch({
         type: "ADD_TOAST",
         payload: {
           id: getUniqueNumber(),
           className: "toast-success",
-          message: "restored to notes successfully",
+          message: "Note got restored successfully",
         },
       });
     }
   } catch (error) {
-    console.error("console", error);
+    console.log(error);
     toastDispatch({
       type: "ADD_TOAST",
       payload: {
@@ -102,32 +116,30 @@ const restoreArchivedNote = async (note, notesDispatch, toastDispatch) => {
   }
 };
 
-const deleteNoteFromArchive = async (note, notesDispatch, toastDispatch) => {
+const deleteTrashedNote = async (notesId, trashDispatch, toastDispatch) => {
   try {
     const encodedToken = localStorage.getItem("token");
-    const { _id } = note;
     const response = await axios({
       method: "delete",
-      url: `/api/archives/delete/${_id}`,
+      url: `/api/trash/delete/${notesId}`,
       headers: { authorization: encodedToken },
     });
-
     if (response.status === 200) {
-      notesDispatch({
-        type: "UPDATE_ARCHIVE",
-        payload: response.data.archives,
+      trashDispatch({
+        type: "UPDATE_TRASH_NOTES",
+        payload: response.data.trash,
       });
       toastDispatch({
         type: "ADD_TOAST",
         payload: {
           id: getUniqueNumber(),
           className: "toast-success",
-          message: "note got deleted successfully",
+          message: "Note got deleted successfully",
         },
       });
     }
   } catch (error) {
-    console.error(error);
+    console.log(error);
     toastDispatch({
       type: "ADD_TOAST",
       payload: {
@@ -139,9 +151,4 @@ const deleteNoteFromArchive = async (note, notesDispatch, toastDispatch) => {
   }
 };
 
-export {
-  getArchivedNotes,
-  addToArchive,
-  restoreArchivedNote,
-  deleteNoteFromArchive,
-};
+export { getAllTrashNotes, addToTrash, restoreTrashedNote, deleteTrashedNote };
