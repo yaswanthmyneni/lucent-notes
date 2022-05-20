@@ -1,12 +1,22 @@
 import { AsideBar, TrashCard } from "components";
-import { useTrashContext } from "context";
+import { useToastContext, useTrashContext } from "context";
+import { useEffect } from "react";
+import { getAllTrashNotes } from "utility";
 
 const TrashPage = () => {
   // from trash context
   const {
     trashState: { trashNotes },
+    trashDispatch,
   } = useTrashContext();
-  
+
+  // from toast context
+  const { toastDispatch } = useToastContext();
+
+  useEffect(() => {
+    getAllTrashNotes(trashDispatch, toastDispatch);
+  }, [trashDispatch, toastDispatch]);
+
   return (
     <div className="page-wrapper">
       <AsideBar />

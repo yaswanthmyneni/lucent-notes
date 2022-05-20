@@ -10,4 +10,14 @@ export {
   restoreArchivedNote,
   deleteNoteFromArchive,
 } from "./archive-functions";
-export { filterByLabel, filterByPriority, sortByDate } from "./filter-functions";
+export {
+  filterByLabel,
+  filterByPriority,
+  sortByDate,
+} from "./filter-functions";
+export {
+  getAllTrashNotes,
+  addToTrash,
+  restoreTrashedNote,
+  deleteTrashedNote,
+} from "./trash-functions";

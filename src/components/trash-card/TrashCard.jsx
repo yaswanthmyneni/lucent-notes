@@ -1,6 +1,6 @@
-import { FaTrash } from "assets/icons/icons";
-import { useToastContext, useTrashContext } from "context";
-import { getUniqueNumber } from "utility";
+import { FaTrash, FaTrashRestore } from "assets/icons/icons";
+import { useNotesContext, useToastContext, useTrashContext } from "context";
+import { deleteTrashedNote, restoreTrashedNote } from "utility";
 
 const TrashCard = ({ note }) => {
   const {
@@ -13,42 +13,14 @@ const TrashCard = ({ note }) => {
     dateAndTime,
   } = note;
 
+  // from notes context
+  const { notesDispatch } = useNotesContext();
+
   // from trash context
-  const {
-    trashState: { trashNotes },
-    trashDispatch,
-  } = useTrashContext();
+  const { trashDispatch } = useTrashContext();
 
   // from toast context
   const { toastDispatch } = useToastContext();
-
-  // delete function
-  const deleteNoteFromTrash = (id, trashNotes, trashDispatch) => {
-    try {
-      const filteredTrashNotes = [...trashNotes].filter(
-        (note) => note._id !== id
-      );
-      trashDispatch({ type: "DELETE_FROM_TRASH", payload: filteredTrashNotes });
-      toastDispatch({
-        type: "ADD_TOAST",
-        payload: {
-          id: getUniqueNumber(),
-          className: "toast-success",
-          message: "note is deleted from trash",
-        },
-      });
-    } catch (error) {
-      console.error(error);
-      toastDispatch({
-        type: "ADD_TOAST",
-        payload: {
-          id: getUniqueNumber(),
-          className: "toast-error",
-          message: "check console!",
-        },
-      });
-    }
-  };
 
   // formatting date
   const newDate = new Date(dateAndTime);
@@ -79,9 +51,20 @@ const TrashCard = ({ note }) => {
         </div>
         <div className="flex space-between mt-8px">
           <h6 className="text-gray m-r-1rem">Created on {dateAndTimeFormat}</h6>
+          <FaTrashRestore
+            className="cursor delete-icon"
+            onClick={() =>
+              restoreTrashedNote(
+                _id,
+                notesDispatch,
+                trashDispatch,
+                toastDispatch
+              )
+            }
+          />
           <FaTrash
-            className="cursor trash-icon"
-            onClick={() => deleteNoteFromTrash(_id, trashNotes, trashDispatch)}
+            className="cursor delete-icon"
+            onClick={() => deleteTrashedNote(_id, trashDispatch, toastDispatch)}
           />
         </div>
       </div>
