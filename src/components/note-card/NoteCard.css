@@ -30,11 +30,6 @@
   color: var(--color-icon);
 }
 
-.trash-icon {
-  font-size: 1.4rem;
-  padding-bottom: 3.3px;
-}
-
 .delete-icon {
   font-size: 1.05rem;
   padding-bottom: 3.3px;
