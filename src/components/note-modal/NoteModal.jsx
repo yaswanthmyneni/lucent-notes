@@ -3,15 +3,33 @@ import { AiFillCloseCircle, IoColorPaletteOutline } from "assets/icons/icons";
 import { useNotesContext, useToastContext } from "context";
 import { addToNotes, editNote } from "utility";
 import { ColorPalletteModal } from "components";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import "./NoteModal.css";
 
 const NoteModal = () => {
   const [isColorsModal, setIsColorsModal] = useState(false);
 
+  const formats = ["italic", "underline", "strike", "list"];
+
+  const modules = {
+    toolbar: [
+      ["italic", "underline", "strike"],
+      [],
+      [{ list: "ordered" }, { list: "bullet" }],
+    ],
+  };
+
   // from notes context
   const { notesState, notesDispatch } = useNotesContext();
-  const { title, description, labelForNote, noteId, backgroundColor, priorityForNote } =
-    notesState;
+  const {
+    title,
+    description,
+    labelForNote,
+    noteId,
+    backgroundColor,
+    priorityForNote,
+  } = notesState;
 
   // from toast context
   const { toastDispatch } = useToastContext();
@@ -25,7 +43,7 @@ const NoteModal = () => {
       <div className={`modal note-modal-container ${backgroundColor}`}>
         <form>
           <AiFillCloseCircle
-            className="card-close-pos card-pos-abs color-green"
+            className="card-pos-abs close-modal"
             onClick={() => {
               notesDispatch({ type: "DISPLAY_MODAL", payload: false });
               notesDispatch({ type: "CLEAR_NOTES_INPUTS" });
@@ -36,7 +54,7 @@ const NoteModal = () => {
             <input
               type="text"
               id="title"
-              className="input note-modal-input"
+              className="input note-modal-input text-lg"
               value={title}
               required
               onChange={(event) =>
@@ -51,13 +69,14 @@ const NoteModal = () => {
                 <input
                   type="radio"
                   name="label"
+                  className='m-0 cursor'
                   id={label}
                   checked={labelForNote === label}
                   onChange={() =>
                     notesDispatch({ type: "LABEL_FOR_NOTE", payload: label })
                   }
                 />
-                {label}
+                <p className='m-0'>{label}</p>
               </label>
             ))}
           </div>
@@ -72,28 +91,30 @@ const NoteModal = () => {
                 <input
                   type="radio"
                   name="priority"
+                  className='m-0 cursor'
                   id={priority}
                   checked={priorityForNote === priority}
                   onChange={() =>
                     notesDispatch({ type: "PRIORITY", payload: priority })
                   }
                 />
-                {priority}
+                <p className='m-0'>{priority}</p>
               </label>
             ))}
           </div>
           <h3 className="m-t-1rem">Description</h3>
           <label htmlFor="description">
-            <textarea
+            <ReactQuill
               id="description"
-              className="input note-modal-input"
-              rows="4"
+              theme="snow"
+              formats={formats}
+              modules={modules}
               value={description}
               required
               onChange={(event) =>
                 notesDispatch({
                   type: "DESCRIPTION",
-                  payload: event.target.value,
+                  payload: event,
                 })
               }
             />

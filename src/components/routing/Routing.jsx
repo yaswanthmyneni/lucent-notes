@@ -7,12 +7,14 @@ import {
   SignInPage,
   SignUpPage,
   TrashPage,
+  PageNotFound,
 } from "pages";
 import { RequireAuth } from "components";
 
 const Routing = () => {
   return (
     <Routes>
+      <Route path="*" element={<PageNotFound />} />
       <Route path="/" element={<LandingPage />} />
       <Route path="/logout" element={<LogoutPage />} />
       <Route path="/signin" element={<SignInPage />} />
