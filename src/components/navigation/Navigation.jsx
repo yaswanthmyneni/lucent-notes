@@ -1,17 +1,9 @@
 import "./navigation.css";
 import { NavLink, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 const Navigation = () => {
   const encodedToken = localStorage.getItem("token");
-  const [logout, setLogout] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    if (logout) {
-      window.location.reload();
-    }
-  }, [logout]);
 
   return (
     <header className="header">
@@ -35,7 +27,6 @@ const Navigation = () => {
             }`}
             to="/logout"
             onClick={() => {
-              setLogout(true);
               localStorage.clear();
             }}
           >
