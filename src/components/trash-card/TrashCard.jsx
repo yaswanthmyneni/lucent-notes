@@ -43,7 +43,7 @@ const TrashCard = ({ note }) => {
       <div className="flex space-between">
         <h4 className="m-0">{title}</h4>
       </div>
-      <p>{description}</p>
+      <div dangerouslySetInnerHTML={{ __html: description }} />
       <div className="mt-auto">
         <div className="flex flex-start gap-1rem">
           <small className="badge-text note-badge-text">{label}</small>
