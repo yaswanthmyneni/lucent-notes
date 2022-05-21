@@ -54,7 +54,7 @@ const NoteModal = () => {
             <input
               type="text"
               id="title"
-              className="input note-modal-input"
+              className="input note-modal-input text-lg"
               value={title}
               required
               onChange={(event) =>
@@ -69,13 +69,14 @@ const NoteModal = () => {
                 <input
                   type="radio"
                   name="label"
+                  className='m-0 cursor'
                   id={label}
                   checked={labelForNote === label}
                   onChange={() =>
                     notesDispatch({ type: "LABEL_FOR_NOTE", payload: label })
                   }
                 />
-                {label}
+                <p className='m-0'>{label}</p>
               </label>
             ))}
           </div>
@@ -90,13 +91,14 @@ const NoteModal = () => {
                 <input
                   type="radio"
                   name="priority"
+                  className='m-0 cursor'
                   id={priority}
                   checked={priorityForNote === priority}
                   onChange={() =>
                     notesDispatch({ type: "PRIORITY", payload: priority })
                   }
                 />
-                {priority}
+                <p className='m-0'>{priority}</p>
               </label>
             ))}
           </div>
