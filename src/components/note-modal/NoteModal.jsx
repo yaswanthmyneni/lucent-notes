@@ -43,7 +43,7 @@ const NoteModal = () => {
       <div className={`modal note-modal-container ${backgroundColor}`}>
         <form>
           <AiFillCloseCircle
-            className="card-close-pos card-pos-abs color-green"
+            className="card-pos-abs close-modal"
             onClick={() => {
               notesDispatch({ type: "DISPLAY_MODAL", payload: false });
               notesDispatch({ type: "CLEAR_NOTES_INPUTS" });
