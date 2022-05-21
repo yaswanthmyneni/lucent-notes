@@ -45,7 +45,7 @@ const NoteCard = ({ note }) => {
         <h4 className="m-0">{title}</h4>
         <BsPin className="cursor-not-allowed" />
       </div>
-      <p>{description}</p>
+      <div dangerouslySetInnerHTML={{ __html: description }} />
       <div className="flex flex-start gap-1rem">
         <small className="badge-text note-badge-text">{label}</small>
         <small className="badge-text note-badge-text">{priority}</small>

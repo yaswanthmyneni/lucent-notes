@@ -3,15 +3,33 @@ import { AiFillCloseCircle, IoColorPaletteOutline } from "assets/icons/icons";
 import { useNotesContext, useToastContext } from "context";
 import { addToNotes, editNote } from "utility";
 import { ColorPalletteModal } from "components";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import "./NoteModal.css";
 
 const NoteModal = () => {
   const [isColorsModal, setIsColorsModal] = useState(false);
 
+  const formats = ["italic", "underline", "strike", "list"];
+
+  const modules = {
+    toolbar: [
+      ["italic", "underline", "strike"],
+      [],
+      [{ list: "ordered" }, { list: "bullet" }],
+    ],
+  };
+
   // from notes context
   const { notesState, notesDispatch } = useNotesContext();
-  const { title, description, labelForNote, noteId, backgroundColor, priorityForNote } =
-    notesState;
+  const {
+    title,
+    description,
+    labelForNote,
+    noteId,
+    backgroundColor,
+    priorityForNote,
+  } = notesState;
 
   // from toast context
   const { toastDispatch } = useToastContext();
@@ -84,16 +102,17 @@ const NoteModal = () => {
           </div>
           <h3 className="m-t-1rem">Description</h3>
           <label htmlFor="description">
-            <textarea
+            <ReactQuill
               id="description"
-              className="input note-modal-input"
-              rows="4"
+              theme="snow"
+              formats={formats}
+              modules={modules}
               value={description}
               required
               onChange={(event) =>
                 notesDispatch({
                   type: "DESCRIPTION",
-                  payload: event.target.value,
+                  payload: event,
                 })
               }
             />
