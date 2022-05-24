@@ -39,7 +39,7 @@ const addToNotes = async (
     const { title, description, backgroundColor, user } = notesState;
     const encodedToken = localStorage.getItem("token");
 
-    if (title === "" && description === "") {
+    if (title.match(/^\s+$|^$/gi) !== null || !priority || !label) {
       return toastDispatch({
         type: "ADD_TOAST",
         payload: {
