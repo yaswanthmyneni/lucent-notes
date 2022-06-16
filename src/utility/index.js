@@ -14,6 +14,7 @@ export {
   filterByLabel,
   filterByPriority,
   sortByDate,
+  filterBySearch,
 } from "./filter-functions";
 export {
   getAllTrashNotes,
