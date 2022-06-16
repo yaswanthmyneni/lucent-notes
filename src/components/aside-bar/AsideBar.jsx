@@ -14,7 +14,7 @@ const AsideBar = () => {
   const { pathname } = useLocation();
 
   return (
-    <aside className="aside-bar">
+    <aside className="aside-bar only-aside">
       <ul className="ul-none aside-ul">
         <NavLink
           to="/notes"
@@ -25,17 +25,6 @@ const AsideBar = () => {
           }
         >
           <AiOutlineHome className="m-r-1rem aside-icons" /> Notes
-        </NavLink>
-        <NavLink
-          to="/label"
-          className={({ isActive }) =>
-            clsx("aside-link flex flex-start cursor-not-allowed", {
-              "active-link": isActive,
-            })
-          }
-        >
-          <MdOutlineLabel className="m-r-1rem aside-icons" />
-          Labels
         </NavLink>
         <NavLink
           to="/archive"

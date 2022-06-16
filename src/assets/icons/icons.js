@@ -20,4 +20,5 @@ export { BiSearchAlt2, BiArchiveIn } from "react-icons/bi";
 export { FiTrash } from "react-icons/fi";
 export { FcEmptyTrash } from "react-icons/fc";
 export { GoSettings } from "react-icons/go";
-export { IoColorPaletteOutline } from "react-icons/io5";
+export { GiHamburgerMenu } from "react-icons/gi";
+export { IoColorPaletteOutline, IoLogOutOutline } from "react-icons/io5";

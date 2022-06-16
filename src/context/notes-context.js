@@ -63,6 +63,11 @@ const notesReducer = (state, { type, payload }) => {
         ...state,
         ...initialFilterState,
       };
+    case "HAMBURGER":
+      return {
+        ...state,
+        isHamburger: payload,
+      };
     default:
       return state;
   }
@@ -79,6 +84,7 @@ const NotesProvider = ({ children }) => {
     labelForNote: "",
     priorityForNote: "",
     ...initialFilterState,
+    isHamburger: false,
   });
 
   const value = { notesState, notesDispatch };

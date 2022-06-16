@@ -8,12 +8,6 @@
   margin: auto;
 }
 
-.sign-in-flex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
 .input-container button {
   margin: 1rem 0;
 }

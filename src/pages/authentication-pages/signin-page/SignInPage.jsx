@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   useAuthenticationContext,
   useNotesContext,
@@ -57,14 +57,11 @@ const SignInPage = () => {
               authDispatch({ type: "PASSWORD", payload: e.target.value })
             }
           />
-          <div className="m-top-8px sign-in-flex">
+          <div className="m-top-8px">
             <label className="cursor" htmlFor="remember-me">
               <input className="cursor" type="checkbox" id="remember-me" />{" "}
               Remember me
             </label>
-            <Link to="/forgot-password" className="cursor">
-              forgot your password?
-            </Link>
           </div>
           <button
             className="btn btn-primary"
