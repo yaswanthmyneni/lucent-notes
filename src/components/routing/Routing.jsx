@@ -19,30 +19,13 @@ const Routing = () => {
       <Route path="/logout" element={<LogoutPage />} />
       <Route path="/signin" element={<SignInPage />} />
       <Route path="/signup" element={<SignUpPage />} />
-      <Route
-        path="/notes"
-        element={
-          <RequireAuth>
-            <NotesPage />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/trash"
-        element={
-          <RequireAuth>
-            <TrashPage />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/archive"
-        element={
-          <RequireAuth>
-            <ArchivePage />
-          </RequireAuth>
-        }
-      />
+
+      {/* Private routes */}
+      <Route element={<RequireAuth />}>
+        <Route path="/notes" element={<NotesPage />} />
+        <Route path="/trash" element={<TrashPage />} />
+        <Route path="/archive" element={<ArchivePage />} />
+      </Route>
     </Routes>
   );
 };

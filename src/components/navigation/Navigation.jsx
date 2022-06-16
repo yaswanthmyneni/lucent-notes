@@ -2,7 +2,6 @@ import "./navigation.css";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   AiOutlineHome,
-  MdOutlineLabel,
   BsArchive,
   FiTrash,
   GiHamburgerMenu,

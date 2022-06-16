@@ -1,9 +1,4 @@
-import {
-  AiOutlineHome,
-  MdOutlineLabel,
-  BsArchive,
-  FiTrash,
-} from "assets/icons/icons";
+import { AiOutlineHome, BsArchive, FiTrash } from "assets/icons/icons";
 import { NavLink, useLocation } from "react-router-dom";
 import { useNotesContext } from "context";
 import clsx from "clsx";

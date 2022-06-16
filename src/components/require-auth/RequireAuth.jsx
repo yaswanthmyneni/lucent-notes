@@ -1,11 +1,11 @@
-const { Navigate, useLocation } = require("react-router-dom");
+const { Navigate, useLocation, Outlet } = require("react-router-dom");
 
-const RequireAuth = ({ children }) => {
+const RequireAuth = () => {
   const location = useLocation();
   const encodedToken = localStorage.getItem("token");
 
   return encodedToken ? (
-    children
+    <Outlet />
   ) : (
     <Navigate to="/signin" state={{ from: location }} replace />
   );
