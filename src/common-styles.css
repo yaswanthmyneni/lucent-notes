@@ -47,10 +47,6 @@ body {
   cursor: pointer;
 }
 
-.cursor-not-allowed {
-  cursor: not-allowed;
-}
-
 .width-fc {
   width: fit-content;
 }
