@@ -59,10 +59,11 @@ const notesReducer = (state, { type, payload }) => {
     case "SET_LATEST":
       return { ...state, sortByLatest: payload };
     case "RESET_FILTERS":
-      return {
-        ...state,
-        ...initialFilterState,
-      };
+      return { ...state, ...initialFilterState };
+    case "HAMBURGER":
+      return { ...state, isHamburger: payload };
+    case "SEARCH":
+      return { ...state, searchValue: payload };
     default:
       return state;
   }
@@ -79,6 +80,8 @@ const NotesProvider = ({ children }) => {
     labelForNote: "",
     priorityForNote: "",
     ...initialFilterState,
+    isHamburger: false,
+    searchValue: "",
   });
 
   const value = { notesState, notesDispatch };

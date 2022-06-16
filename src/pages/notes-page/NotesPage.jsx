@@ -2,15 +2,31 @@ import { AsideBar, FilterModal, NoteCard, NoteModal } from "components";
 import { BiSearchAlt2, GoSettings } from "assets/icons/icons";
 import { useNotesContext, useToastContext } from "context";
 import { useEffect } from "react";
-import { filterByLabel, filterByPriority, getNotes, sortByDate } from "utility";
+import {
+  filterByLabel,
+  filterByPriority,
+  filterBySearch,
+  getNotes,
+  sortByDate,
+} from "utility";
 import "./NotesPage.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const NotesPage = () => {
   const [isFilter, setIsFilter] = useState(false);
+  const [searchString, setSearchString] = useState("");
+  let timerId = useRef(null);
+
   // from notes context
   const {
-    notesState: { user, isDisplayModal, label, priority, sortByLatest },
+    notesState: {
+      user,
+      isDisplayModal,
+      label,
+      priority,
+      sortByLatest,
+      searchValue,
+    },
     notesDispatch,
   } = useNotesContext();
   const { notes } = user;
@@ -22,10 +38,19 @@ const NotesPage = () => {
     getNotes(notesDispatch, toastDispatch);
   }, [notesDispatch, toastDispatch]);
 
+  const handleSearch = (e) => {
+    setSearchString(e.target.value);
+    clearInterval(timerId.current);
+    timerId.current = setTimeout(() => {
+      notesDispatch({ type: "SEARCH", payload: e.target.value });
+    }, 600);
+  };
+
   // filters
   const filteredByLabel = filterByLabel(notes, label);
   const filteredByPriority = filterByPriority(filteredByLabel, priority);
   const filteredByDate = sortByDate(filteredByPriority, sortByLatest);
+  const filteredBySearch = filterBySearch(filteredByDate, searchValue);
 
   return (
     <>
@@ -39,6 +64,8 @@ const NotesPage = () => {
                 type="text"
                 id="search-bar"
                 className="input notes-input"
+                value={searchString}
+                onChange={handleSearch}
               />
             </label>
             <GoSettings
@@ -47,8 +74,8 @@ const NotesPage = () => {
             />
           </div>
           {isFilter && <FilterModal setIsFilter={setIsFilter} />}
-          {filteredByDate?.length ? (
-            filteredByDate.map((note) => (
+          {filteredBySearch?.length ? (
+            filteredBySearch.map((note) => (
               <NoteCard key={note._id} note={note} />
             ))
           ) : (

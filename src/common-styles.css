@@ -1,7 +1,7 @@
 :root {
   --z-index-header-30: 30;
   --z-index-toast-27: 27;
-  --color-tickle-pink: #F786AA;
+  --color-tickle-pink: #f786aa;
   --color-icon: #24292d;
 }
 
@@ -45,10 +45,6 @@ body {
 
 .cursor {
   cursor: pointer;
-}
-
-.cursor-not-allowed {
-  cursor: not-allowed;
 }
 
 .width-fc {
@@ -108,10 +104,9 @@ body {
   grid-template-areas: "aside main";
 }
 
-@media screen and (max-width: 486px) {
+@media screen and (max-width: 768px) {
   .page-wrapper {
-    display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-areas: "main";
   }
 }

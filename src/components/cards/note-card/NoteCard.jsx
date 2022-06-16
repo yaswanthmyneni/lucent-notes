@@ -1,4 +1,4 @@
-import { BsPin, MdArchive, FaTrash, MdOutlineEdit } from "assets/icons/icons";
+import { MdArchive, FaTrash, MdOutlineEdit } from "assets/icons/icons";
 import { useNotesContext, useToastContext, useTrashContext } from "context";
 import { addToArchive, addToTrash } from "utility";
 import "./NoteCard.css";
@@ -41,10 +41,7 @@ const NoteCard = ({ note }) => {
 
   return (
     <div className={`note-card ${backgroundColor}`}>
-      <div className="flex space-between">
         <h4 className="m-0">{title}</h4>
-        <BsPin className="cursor-not-allowed" />
-      </div>
       <div dangerouslySetInnerHTML={{ __html: description }} />
       <div className="flex flex-start gap-1rem">
         <small className="badge-text note-badge-text">{label}</small>

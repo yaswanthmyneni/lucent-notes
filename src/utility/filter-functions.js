@@ -52,4 +52,11 @@ const sortByDate = (allNotes, latest) => {
   }
 };
 
-export { filterByLabel, filterByPriority, sortByDate };
+const filterBySearch = (allNotes, searchValue) => {
+  if (searchValue.match(/^\s*$/) === null) {
+    return allNotes.filter((note) => note.title.toLowerCase().includes(searchValue));
+  }
+  return allNotes;
+};
+
+export { filterByLabel, filterByPriority, sortByDate, filterBySearch };

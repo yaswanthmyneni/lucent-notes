@@ -31,3 +31,15 @@
 .filter-icon {
   transform: rotate(-90deg);
 }
+
+@media screen and (max-width: 1024px) {
+  .notes-main {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .notes-main {
+    width: 90%;
+  }
+}

@@ -20,7 +20,7 @@
 }
 
 .hero-image-container {
-  width: 40rem;
+  /* width: 40rem; */
   height: 35rem;
   margin: auto;
 }
@@ -28,4 +28,20 @@
 .hero-link {
   display: block;
   text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .hero-image-container {
+    display: none;
+  }
+
+  .grid {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .hero {
+    width: 90%;
+  }
 }

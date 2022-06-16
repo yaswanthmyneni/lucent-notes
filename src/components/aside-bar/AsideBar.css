@@ -37,3 +37,13 @@
 .aside-icons {
   font-size: 1.5rem;
 }
+
+@media screen and (max-width: 768px) {
+  .aside-bar {
+    position: absolute;
+    height: auto;
+  }
+  .only-aside{
+    display: none;
+  }
+}
